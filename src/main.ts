@@ -20,10 +20,9 @@ const script: Firebot.CustomScript<Params> = {
   },
   run: (runRequest) => {
     const { logger } = runRequest.modules;
-    const tempre = /([0-9]*)\s?([cfCF])/;
+    const tempre = /(-?[0-9]*.?[0-9]*)\s?°?([cfCF])/;
 
     let userCMD = runRequest.trigger.metadata.userCommand.args.join(" ");
-    logger.debug(userCMD);
     let og_msg = runRequest.trigger.metadata.chatMessage;
     if (!tempre.test(userCMD)){
       runRequest.modules.twitchChat.sendChatMessage("You need to put in a temperature like !temp 32f", null, null, og_msg.id);
@@ -31,7 +30,6 @@ const script: Firebot.CustomScript<Params> = {
     }
 
     let regex_results = tempre.exec(userCMD);
-    logger.debug(regex_results.toString())
     
     let temp = parseInt(regex_results.at(1))
     let unit = regex_results.at(2)
@@ -50,7 +48,7 @@ const script: Firebot.CustomScript<Params> = {
       return;
     }
 
-    runRequest.modules.twitchChat.sendChatMessage(`${result} ${out_unit}`, null, null, og_msg.id);
+    runRequest.modules.twitchChat.sendChatMessage(`${result}${out_unit}`, null, null, og_msg.id);
 
   },
 };
