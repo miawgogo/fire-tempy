@@ -11,7 +11,7 @@ const script: Firebot.CustomScript<Params> = {
       name: "fire-tempy",
       description: "a simple script to have a temperature conversion between celsius & fahrenheit",
       author: "miawgogo",
-      version: "1.0",
+      version: "0.2",
       firebotVersion: "5",
     };
   },
