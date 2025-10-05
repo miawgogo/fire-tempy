@@ -13,7 +13,7 @@ test("run() calls logger.info with the message", async () => {
     void,
     ArgumentsOf<ScriptModules["logger"]["info"]>
   >();
-  const expectedMessage = "foobar";
+  const expectedMessage = "32c";
   const runRequest = ({
     parameters: { message: expectedMessage },
     modules: { logger: { info: mockInfoLog } },
